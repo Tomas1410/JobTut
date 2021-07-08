@@ -16,6 +16,11 @@
       "es2019",
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "tslib": [
+        "./node_modules/tslib/tslib.d.ts"
+      ]
+    }
   }
 }

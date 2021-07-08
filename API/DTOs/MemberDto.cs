@@ -12,6 +12,7 @@ namespace API.DTOs
         public string UserName { get; set; }
         public string PhotoUrl { get; set; }
         public string KnownAs { get; set; }
+        public int Age { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public string Gender { get; set; }
