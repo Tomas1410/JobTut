@@ -1,0 +1,44 @@
+!Cloudinary1
+
+ng g c --skip-tests messages/usermessages/mainComponent -> tworzenie komponentu w danej directory 
+pipe(map()) pozwala na przerobienie requestu przed jego subskrybcją
+!! zmienia object na boolean
+|async pipe zastepuje subskrypcje, po zakonczeniu pracy z komponentem, subskrybcja sie odłącza
+wstrzykniety serwis musi byc publiczny aby mozna go bylo uzywac w component.html
+two way data binding w inpucie   -> name="coś" + [(ngmodel)] = "model.coś"
+
+parent =>child
+1)@Input() nazwaInputa in child component
+2)w parent.html  dajemy [nazwaInputa]="propFromParent"
+
+child =>parent
+1)@Output() nazwaOutputa = new EventEmmiter(); <=== in child component.ts 
+2)function()this.nazwaOutputa.emit(false ||cokolwiek innego) <=== in child component.ts  
+3)function(event:boolean||typ cokolwiek innego) this.prop = event <=== in parent component.ts  
+4 (nazwaOutputa)=nazwaFunkcjiParenta($event)  <=== in parent component.html 
+
+w appsettins.json wystarczy wdupić connection string
+
+exception jest przekazywany zawsze wyżej, dopóki zostanie obsłużony przez jakąś metodę
+interceptor pozwala globalnie wychwytywać errory pochodzace z response
+
+Entity framework => delete on cascade mozliwy tylko po fully definied relationship czyli w tabeli 
+one => ICollection<Photo> 
+many => AppUser
+many => AppUserId
+
+Eager loading to include many while requesting one, zeby zapobiec multiple cycle exception, tworzy sie DTO
+
+Wyciąganie tabeli many :
+
+1)Automapper pozwala na zmapowanie odpowiednio obiektu zwracaneog przez request do bazy danych np. tak, aby brał rekordy z tabeli łączącej
+2)_contex.One.Include(m=>m.Many) .ProjectTo(Queryable extension) pozwala na pominiecie Include
+
+Reactive forms ogarnac
+
+Interceptor z automatu dodaje token do requestu, nie musimy go dodawac manulanie 
+pipe(take(1)).subscribe gwarantuje odsubskrybowanie i nie uzywanie wiecej czegos po uzyciu subscribe
+
+#editForm daje nam dostęp do formatki w obrebie całego html, mozna potem zrobic gdzies indziej *ngif="editform.dirty[]"dirty pochodzi z AbstractControl API
+można też tego użyć z poziomu componentu @ViewChild('editform') 
+@HostListener pozwala na access eventów z browsera, w tym przypadku preventuje zamkniecie okna 
