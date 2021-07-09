@@ -39,6 +39,15 @@ Reactive forms ogarnac
 Interceptor z automatu dodaje token do requestu, nie musimy go dodawac manulanie 
 pipe(take(1)).subscribe gwarantuje odsubskrybowanie i nie uzywanie wiecej czegos po uzyciu subscribe
 
-#editForm daje nam dostęp do formatki w obrebie całego html, mozna potem zrobic gdzies indziej *ngif="editform.dirty[]"dirty pochodzi z AbstractControl API
-można też tego użyć z poziomu componentu @ViewChild('editform') 
-@HostListener pozwala na access eventów z browsera, w tym przypadku preventuje zamkniecie okna 
+#editForm daje nam dostęp do formatki w obrebie całego html, mozna potem zrobic gdzies indziej *ngif="editform.dirty[]"dirty pochodzi z AbstractControl API,można też tego użyć z poziomu componentu poprzez @ViewChild('editform') 
+
+@HostListener pozwala na access eventów z browsera, w tym przypadku preventuje zamkniecie okna przeglądarki po wprowadzeniu edycji
+PreventUnsavedChangesGuard korzysta z CanDeactivate do zapobiegania przejscia na inną podstronę np. po kliknięciu navbara
+
+services są singletonami - pozostają żywe dopóki aplikacja nie zostanie zamkknięta, wiec mogą być dobrym miejscem do przechowywania application state, co pozwala na dodanie spinnera tylko w niektórych miejscach
+
+CreatedAtRoute("GetUser",,_mapper.Map<PhotoDto>(photo)), zwroci nam response 201, z location pod routem api/user/username, dzieki uzyciu Name i dto zdjecia
+[HttpGet("{username}", Name = "GetUser")]
+async Task<ActionResult>GetUser(string username)
+
+Reactive forms => działają jak hooki z reacta, które zmieniają się onChange w formie,
